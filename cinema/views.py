@@ -4,7 +4,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from cinema.models import Movie, CinemaHall, Genre, Actor
-from cinema.serializers import MovieSerializer, CinemaHallSerializer, GenreSerializer, ActorSerializer
+from cinema.serializers import (
+    MovieSerializer,
+    CinemaHallSerializer,
+    GenreSerializer,
+    ActorSerializer
+)
 
 
 class MovieViewSet(viewsets.ModelViewSet):
