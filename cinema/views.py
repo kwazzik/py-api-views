@@ -34,8 +34,11 @@ class ActorList(
     mixins.CreateModelMixin,
     generics.GenericAPIView
 ):
-    queryset = Actor.objects.all()
-    serializer_class = ActorSerializer
+    def get_queryset(self):
+        return Actor.objects.all()
+
+    def get_serializer_class(self):
+        return ActorSerializer
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -50,8 +53,11 @@ class ActorDetail(
     mixins.DestroyModelMixin,
     generics.GenericAPIView
 ):
-    queryset = Actor.objects.all()
-    serializer_class = ActorSerializer
+    def get_queryset(self):
+        return Actor.objects.all()
+
+    def get_serializer_class(self):
+        return ActorSerializer
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
@@ -109,4 +115,3 @@ class GenreDetail(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
